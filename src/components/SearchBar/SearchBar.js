@@ -12,11 +12,13 @@ class SearchBar extends Component {
 //    props - list of books
     }
     
-    findBook() {
+    findBook = (e) => {
         /*  
         search by title 
         search by author
         */
+        e.preventDefault()
+
         const searchTerm = this.state.input
 
         const foundBook = this.props.books.find(book => {
@@ -25,6 +27,7 @@ class SearchBar extends Component {
 
         this.setState({
             ...this.state,
+            input: e.target.value,
             book: foundBook
         })
 
@@ -34,7 +37,14 @@ class SearchBar extends Component {
         return (
             // text output
             // text input
-//            button       
+            <div>
+                <form>
+                <label>Search:
+                    <input type="search" value={this.state.input} onChange={this.findBook}/>
+                </label>
+                </form>
+                <p>{[this.state.book].title || ''}</p>
+            </div>
         )
     }
 }
