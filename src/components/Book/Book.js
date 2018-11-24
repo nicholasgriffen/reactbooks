@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
 class Book extends Component {
-    onAddBook = e => {
-        e.preventDefault()
+    onAddBook = () => {
         this.props.onAddBook(this.props.book.id)
     }
 
