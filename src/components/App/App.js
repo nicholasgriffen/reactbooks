@@ -14,7 +14,7 @@ class App extends Component {
       searchTerm: ''
     }
 
-    this.API = 'http://localhost:8082/api/books'
+    this.API = "http://localhost:8082/api/books"
   }
 
   async componentDidMount() {
@@ -26,18 +26,23 @@ class App extends Component {
     
     this.setState({
       ...this.state, 
-      books: [...books, {inCart: true, title: "Digijan", price: 5, id: 100}]
+      books: [...books, {
+        inCart: true, 
+        title: "Digijan", 
+        price: 12.15, 
+        id: 100,
+      author: "The Jan"}]
     })
   }
 
-  onSearchBook = searchTerm => {
+  onSearchBook = searchTerm => (
     this.setState({
       ...this.state, 
       searchTerm
     })
-  }
+  )
 
-  onAddBook = id => {
+  onAddBook = id => (
     this.setState({
       ...this.state,
       books: this.state.books.map(book => {
@@ -45,22 +50,35 @@ class App extends Component {
         return book
       })
     })
-  }
+  )
 
   render() {
     return (
       <div className="App">
-      <SearchBar onSearchBook={this.onSearchBook}/>
-        <ul>
-          <BookList books={this.state.books} searchTerm={this.state.searchTerm} onAddBook={this.onAddBook}/>
-        </ul>
-        <ul>
-          <Cart books={this.state.books} total={this.state.books
-            .filter(book => book.inCart).reduce((acc, book) => {
-              return acc + book.price 
-            }, 0)}/>
-        </ul>
-      </div>
+        <div className="leftFlex">
+          <SearchBar 
+          onSearchBook={this.onSearchBook}/>
+          <ul>
+            <BookList 
+            books={this.state.books} 
+            searchTerm={this.state.searchTerm} 
+            onAddBook={this.onAddBook}/>
+          </ul>
+        </div>
+        <div className="rightFlex">
+          <h1>Shopping Cart</h1>
+          <ul>
+            <Cart 
+            books={this.state.books} 
+            total={this.state.books
+              .filter(book => book.inCart)
+              .reduce((acc, book) => {
+                return acc + book.price 
+              }, 0)
+              .toFixed(2)}/>
+          </ul>
+        </div>
+        </div>
     )
   }
 }

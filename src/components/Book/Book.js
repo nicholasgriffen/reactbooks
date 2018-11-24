@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 
 class Book extends Component {
-    onAddBook = (e) => {
+    onAddBook = e => {
         e.preventDefault()
-        
         this.props.onAddBook(this.props.book.id)
     }
 
     render() {
         const { book: { title, author, id } } = this.props
-        
-        return <li id={id}>{title}\nBy: {author}<button value="Add to cart" onClick={this.onAddBook}></button></li>
+        return ( 
+            <li 
+            id={id}>
+            {`${title} By: ${author}`}
+                <button 
+                value="Add to cart" 
+                onClick={this.onAddBook}></button>
+            </li>
+        )
     }
 }
 

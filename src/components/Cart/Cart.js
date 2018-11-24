@@ -4,7 +4,8 @@ import CartItem from '../CartItem/CartItem'
 class Cart extends Component {
         
     render() {
-        const books = this.props.books.filter(book => book.inCart)
+        const books = this.props.books
+        .filter(book => book.inCart)
         .map((book, idx) => {
             return <CartItem key={idx} book={book}/>
         })
