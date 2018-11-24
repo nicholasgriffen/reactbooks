@@ -4,46 +4,35 @@ import React, { Component } from 'react'
 class SearchBar extends Component {
     constructor() {
         super()
-//    state - user input
+
         this.state = {
             input: '',
             book: {}
         }
-//    props - list of books
     }
     
     findBook = (e) => {
-        /*  
-        search by title 
-        search by author
-        */
         e.preventDefault()
 
-        const searchTerm = this.state.input
-
-        const foundBook = this.props.books.find(book => {
-            return (book.title.includes(searchTerm) || book.author.includes(searchTerm))
-        })
+        const searchTerm = e.target.value
+        const { onSearchBook } = this.props
 
         this.setState({
             ...this.state,
-            input: e.target.value,
-            book: foundBook
+            input: searchTerm,
         })
 
+        onSearchBook(searchTerm)
     }
 
     render() {
         return (
-            // text output
-            // text input
             <div>
                 <form>
-                <label>Search:
-                    <input type="search" value={this.state.input} onChange={this.findBook}/>
-                </label>
+                    <label>Search:
+                        <input type="search" value={this.state.input} onChange={this.findBook}/>
+                    </label>
                 </form>
-                <p>{[this.state.book].title || ''}</p>
             </div>
         )
     }
