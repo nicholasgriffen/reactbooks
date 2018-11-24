@@ -1,22 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Book extends Component {
-    onAddBook = () => {
-        this.props.onAddBook(this.props.book.id)
-    }
-
-    render() {
-        const { book: { title, author, id } } = this.props
-        return ( 
-            <li 
-            id={id}>
-            {`${title} By: ${author}`}
-                <button 
-                value="Add to cart" 
-                onClick={this.onAddBook}></button>
+const Book = ({ book: { title, author, id }, onAddBook }) => ( 
+            <li id={id}>
+                {`${title} By: ${author}`}
+                <button  
+                    onClick={() => onAddBook(id)}>
+                    Add to cart
+                </button>
             </li>
-        )
-    }
-}
+    )
 
 export default Book
