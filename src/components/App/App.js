@@ -10,7 +10,7 @@ class App extends Component {
     super()
 
     this.state = {
-      books: [{inCart: true, title: "Digijan", price: 5, id: 100}],
+      books: [],
       searchTerm: ''
     }
 
@@ -26,7 +26,7 @@ class App extends Component {
     
     this.setState({
       ...this.state, 
-      books: books
+      books: [...books, {inCart: true, title: "Digijan", price: 5, id: 100}]
     })
   }
 
@@ -55,7 +55,10 @@ class App extends Component {
           <BookList books={this.state.books} searchTerm={this.state.searchTerm} onAddBook={this.onAddBook}/>
         </ul>
         <ul>
-          <Cart books={this.state.books} />
+          <Cart books={this.state.books} total={this.state.books
+            .filter(book => book.inCart).reduce((acc, book) => {
+              return acc + book.price 
+            }, 0)}/>
         </ul>
       </div>
     )
