@@ -57,25 +57,25 @@ class App extends Component {
       <div className="App">
         <div className="leftFlex">
           <SearchBar 
-          onSearchBook={this.onSearchBook}/>
+            onSearchBook={this.onSearchBook}/>
           <ul>
             <BookList 
-            books={this.state.books} 
-            searchTerm={this.state.searchTerm} 
-            onAddBook={this.onAddBook}/>
+              books={this.state.books} 
+              searchTerm={this.state.searchTerm} 
+              onAddBook={this.onAddBook}/>
           </ul>
         </div>
         <div className="rightFlex">
           <h1>Shopping Cart</h1>
           <ul>
             <Cart 
-            books={this.state.books} 
-            total={this.state.books
-              .filter(book => book.inCart)
-              .reduce((acc, book) => {
-                return acc + book.price 
-              }, 0)
-              .toFixed(2)}/>
+              books={this.state.books} 
+              total={this.state.books
+                .filter(book => book.inCart)
+                .reduce((acc, book) => {
+                  return acc + book.price 
+                }, 0)
+                .toFixed(2)}/>
           </ul>
         </div>
         </div>
