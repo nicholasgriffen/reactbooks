@@ -7,7 +7,6 @@ class SearchBar extends Component {
 
         this.state = {
             input: '',
-            book: {}
         }
     }
     
