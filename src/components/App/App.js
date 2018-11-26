@@ -14,7 +14,7 @@ class App extends Component {
       searchTerm: ''
     }
 
-    this.API = "http://localhost:8082/api/books"
+    this.API = process.env.REACT_APP_API_URL || "http://localhost:8082/api/books"
   }
 
   async componentDidMount() {
