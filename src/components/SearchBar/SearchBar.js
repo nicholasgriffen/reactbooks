@@ -1,12 +1,11 @@
 import React from 'react'
 
 
-const SearchBar = ({ onSearchBook, input })=> (
+const SearchBar = ({ onSearchBook })=> (
     <div>
         <form>
             <label>Search:
                 <input type="search" 
-                    value={ input } 
                     onChange={ e => {
                         e.preventDefault()
                         onSearchBook(e.target.value)
