@@ -58,16 +58,13 @@ class App extends Component {
         <div className="leftFlex">
           <SearchBar 
             onSearchBook={this.onSearchBook}/>
-          <ul>
-            <BookList 
-              books={this.state.books} 
-              searchTerm={this.state.searchTerm} 
-              onAddBook={this.onAddBook}/>
-          </ul>
+          <BookList 
+            books={this.state.books} 
+            searchTerm={this.state.searchTerm} 
+            onAddBook={this.onAddBook}/>
         </div>
         <div className="rightFlex">
           <h1>Shopping Cart</h1>
-          <ul>
             <Cart 
               books={this.state.books} 
               total={this.state.books
@@ -76,7 +73,6 @@ class App extends Component {
                   return acc + book.price 
                 }, 0)
                 .toFixed(2)}/>
-          </ul>
         </div>
         </div>
     )
